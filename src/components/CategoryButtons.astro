@@ -1,0 +1,66 @@
+---
+const categories: string[] = ["Semua Produk", "Minyak Herbal", "Suplemen", "Kosmetik"];
+---
+
+<div class="category-buttons">
+  {categories.map((category, index) => (
+    <button
+      class={`category-btn ${index === 0 ? "active" : ""}`}
+      data-category={category}
+    >
+      {category}
+    </button>
+  ))}
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".category-btn");
+  const products = document.querySelectorAll<HTMLDivElement>(".product-card");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      buttons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const category = button.dataset.category;
+      products.forEach((product) => {
+        if (category === "Semua Produk" || product.dataset.category === category) {
+          product.style.display = "";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px 0;
+    background-color: white;
+  }
+
+  .category-btn {
+    background-color: #ecf0f1;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .category-btn.active {
+    background-color: #3498db;
+    color: white;
+  }
+
+  @media (max-width: 480px) {
+    .category-buttons {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+</style>

@@ -1,0 +1,118 @@
+---
+import SearchBar from "./SearchBar.astro";
+import CartIcon from "./CartIcon.astro";
+import ProfileIcon from "./ProfileIcon.astro";
+---
+
+<header class="professional-header">
+  <div class="container header-content">
+    <div class="logo-container">
+      <div class="logo-icon">
+        <img
+          src="https://tse1.mm.bing.net/th?id=OIP.e399GQeZOOOi_e1bukxmrwHaHa&pid=Api&P=0&h=180"
+          alt="HPAI Logo"
+        />
+      </div>
+      <h1 class="store-title">HPAI Official Store</h1>
+    </div>
+
+    <SearchBar />
+
+    <div class="nav-actions">
+      <CartIcon />
+      <ProfileIcon />
+    </div>
+  </div>
+</header>
+
+<style>
+  .professional-header {
+    background: linear-gradient(135deg, #4a90e2, #2c3e50);
+    padding: 15px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .logo-icon {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+
+  .logo-icon:hover {
+    transform: scale(1.1);
+  }
+
+  .logo-icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  .store-title {
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-actions > * {
+    transition:
+      transform 0.2s ease,
+      color 0.3s ease;
+  }
+
+  .nav-actions > *:hover {
+    transform: translateY(-3px);
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .nav-actions {
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .header-content {
+      padding: 0 20px;
+    }
+  }
+</style>

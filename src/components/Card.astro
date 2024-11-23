@@ -1,61 +1,115 @@
 ---
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string;
+  body: string;
+  href: string;
 }
 
 const { href, title, body } = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
+  <a href={href}>
+    <h2>
+      {title}
+      <span>&rarr;</span>
+    </h2>
+    <p>
+      {body}
+    </p>
+  </a>
 </li>
+
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+  :root {
+    --card-bg: #1c1f26;
+    --card-hover-bg: #292d36;
+    --accent-gradient: linear-gradient(135deg, #6a5acd, #00bcd4);
+    --accent-light: 102, 187, 255;
+    --text-color: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .link-card {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .link-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-hover-bg);
+  }
+
+  .link-card > a {
+    width: 100%;
+    text-decoration: none;
+    padding: 1.5rem;
+    border-radius: 16px;
+    color: var(--text-color);
+    display: block;
+    background-image: var(--accent-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition:
+      color 0.3s ease,
+      background-image 0.3s ease;
+  }
+
+  .link-card:hover > a {
+    color: var(--text-color);
+    background-image: none;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  h2 span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .link-card:hover h2 span {
+    transform: translateX(8px);
+  }
+
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    transition: color 0.3s ease;
+  }
+
+  .link-card:hover p {
+    color: var(--text-color);
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
 </style>
