@@ -5,35 +5,45 @@ import ProfileIcon from "./ProfileIcon.astro";
 ---
 
 <header class="professional-header">
-  <div class="container header-content">
+  <nav class="container header-content">
     <div class="logo-container">
-      <div class="logo-icon">
-        <img
-          src="https://tse1.mm.bing.net/th?id=OIP.e399GQeZOOOi_e1bukxmrwHaHa&pid=Api&P=0&h=180"
-          alt="HPAI Logo"
-        />
-      </div>
-      <h1 class="store-title">HPAI Official Store</h1>
+      <a href="/" class="logo-link">
+        <div class="logo-icon">
+          <img
+            src="https://tse1.mm.bing.net/th?id=OIP.e399GQeZOOOi_e1bukxmrwHaHa&pid=Api&P=0&h=180"
+            alt="HPAI Logo"
+            width="30"
+            height="30"
+          />
+        </div>
+        <h1 class="store-title">HPAI Codify Store</h1>
+      </a>
     </div>
 
-    <SearchBar />
+    <div class="search-container">
+      <SearchBar />
+    </div>
 
     <div class="nav-actions">
       <CartIcon />
       <ProfileIcon />
     </div>
-  </div>
+  </nav>
 </header>
 
 <style>
   .professional-header {
-    background: linear-gradient(135deg, #4a90e2, #2c3e50);
-    padding: 15px 20px;
+    background: linear-gradient(135deg, #06990d, #047508);
+    padding: 1rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+  }
+
+  .professional-header:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   }
 
   .header-content {
@@ -42,12 +52,23 @@ import ProfileIcon from "./ProfileIcon.astro";
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 2rem;
   }
 
   .logo-container {
+    flex-shrink: 0;
+  }
+
+  .logo-link {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .logo-link:hover {
+    transform: translateY(-2px);
   }
 
   .logo-icon {
@@ -62,10 +83,6 @@ import ProfileIcon from "./ProfileIcon.astro";
     transition: transform 0.2s ease;
   }
 
-  .logo-icon:hover {
-    transform: scale(1.1);
-  }
-
   .logo-icon img {
     width: 30px;
     height: 30px;
@@ -74,45 +91,74 @@ import ProfileIcon from "./ProfileIcon.astro";
 
   .store-title {
     color: white;
-    font-size: 1.75rem;
+    font-size: clamp(1.2rem, 2vw, 1.75rem);
     font-weight: 800;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+  }
+
+  .search-container {
+    flex-grow: 1;
+    max-width: 600px;
   }
 
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1.5rem;
   }
 
   .nav-actions > * {
-    transition:
-      transform 0.2s ease,
-      color 0.3s ease;
+    transition: all 0.2s ease;
   }
 
   .nav-actions > *:hover {
     transform: translateY(-3px);
-    color: #fff;
+    filter: brightness(1.2);
   }
 
   @media (max-width: 768px) {
     .header-content {
       flex-direction: column;
-      gap: 10px;
-      text-align: center;
+      gap: 1rem;
+    }
+
+    .search-container {
+      width: 100%;
+      order: 2;
+    }
+
+    .logo-container {
+      order: 1;
     }
 
     .nav-actions {
+      order: 3;
+      width: 100%;
       justify-content: center;
+      gap: 2rem;
+    }
+
+    .store-title {
+      font-size: 1.2rem;
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 769px) and (max-width: 1024px) {
     .header-content {
-      padding: 0 20px;
+      padding: 0 1rem;
+    }
+
+    .store-title {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .header-content {
+      padding: 0 2rem;
     }
   }
 </style>

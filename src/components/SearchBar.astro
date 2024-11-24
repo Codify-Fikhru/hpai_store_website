@@ -1,125 +1,125 @@
 ---
+
 ---
 
 <div class="advanced-search-container">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Temukan produk herbal terbaik..."
-      aria-label="Search"
-    />
-    <div class="search-icon" aria-label="Search Button">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#4a90e2"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    </div>
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Temukan produk herbal terbaik..."
+    aria-label="Search"
+  />
+  <div class="search-icon" aria-label="Search Button">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#4a90e2"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
   </div>
-  
-  <script>
-    const searchInput = document.getElementById("searchInput");
-    const productGrid = document.querySelector(".products");
-  
-    searchInput?.addEventListener("input", (e) => {
-      const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
-      const products = document.querySelectorAll(".product-card");
-  
-      products.forEach((product: HTMLDivElement) => {
-        const productName = product
-          .querySelector("h3")
-          ?.textContent.toLowerCase();
-        if (productName?.includes(searchTerm)) {
-          product.style.display = "";
-        } else {
-          product.style.display = "none";
-        }
-      });
+</div>
+
+<script>
+  const searchInput = document.getElementById("searchInput");
+  const productGrid = document.querySelector(".products");
+
+  searchInput?.addEventListener("input", (e) => {
+    const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+    const products = document.querySelectorAll(".product-card");
+
+    products.forEach((product: HTMLDivElement) => {
+      const productName = product
+        .querySelector("h3")
+        ?.textContent.toLowerCase();
+      if (productName?.includes(searchTerm)) {
+        product.style.display = "";
+      } else {
+        product.style.display = "none";
+      }
     });
-  </script>
-  
-  <style>
+  });
+</script>
+
+<style>
+  .advanced-search-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 12px 18px;
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+    margin: 20px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .advanced-search-container:focus-within {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+  }
+
+  .advanced-search-container input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .advanced-search-container input:focus {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .advanced-search-container input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+  }
+
+  .search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .search-icon:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
     .advanced-search-container {
-      display: flex;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 30px;
-      padding: 12px 18px;
-      width: 100%;
-      max-width: 400px;
-      transition: all 0.3s ease;
-      margin: 20px auto;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
     }
-  
-    .advanced-search-container:focus-within {
-      background-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-      transform: scale(1.02);
-    }
-  
+
     .advanced-search-container input {
-      flex-grow: 1;
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 1rem;
-      font-weight: 500;
-      padding: 5px 10px;
-      outline: none;
-      transition: all 0.2s ease;
+      font-size: 0.95rem;
     }
-  
-    .advanced-search-container input:focus {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-  
-    .advanced-search-container input::placeholder {
-      color: rgba(255, 255, 255, 0.6);
-      font-style: italic;
-    }
-  
+
     .search-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: white;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      width: 35px;
+      height: 35px;
     }
-  
-    .search-icon:hover {
-      transform: scale(1.15);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    }
-  
-    @media (max-width: 768px) {
-      .advanced-search-container {
-        max-width: 90%;
-      }
-  
-      .advanced-search-container input {
-        font-size: 0.95rem;
-      }
-  
-      .search-icon {
-        width: 35px;
-        height: 35px;
-      }
-    }
-  </style>
-  
+  }
+</style>

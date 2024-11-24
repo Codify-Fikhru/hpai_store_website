@@ -1,14 +1,64 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import CategoryButtons from '../components/CategoryButtons.astro';
-import ProductGrid from '../components/ProductGrid.astro';
+import Layout from "../layouts/Layout.astro";
+import CategoryButtons from "../components/CategoryButtons.astro";
+import ProductGrid from "../components/ProductGrid.astro";
+import HeroSection from "../components/HeroSection.astro";
+import Benefits from "../components/Benefits.astro";
 ---
 
 <Layout title="HPAI Official Store">
-  <main>
-    <CategoryButtons />
-    <div class="container">
-      <ProductGrid />
-    </div>
+  <main class="main-content">
+    <!-- Hero Section -->
+    <HeroSection />
+
+    <!-- Categories -->
+    <section class="section-categories">
+      <div class="container">
+        <h2 class="section-title">Kategori Produk</h2>
+        <CategoryButtons />
+      </div>
+    </section>
+
+    <!-- All Products -->
+    <section class="section-products">
+      <div class="container">
+        <h2 class="section-title">Semua Produk</h2>
+        <ProductGrid />
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <Benefits />
   </main>
 </Layout>
+
+<style>
+  .main-content {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 2rem;
+  }
+
+  .section-categories,
+  .section-featured,
+  .section-products {
+    padding: 3rem 0;
+  }
+
+  .section-featured {
+    background-color: #fff;
+  }
+</style>

@@ -1,16 +1,23 @@
 ---
-const categories: string[] = ["Semua Produk", "Minyak Herbal", "Suplemen", "Kosmetik"];
+const categories: string[] = [
+  "Semua Produk",
+  "Minyak Herbal",
+  "Suplemen",
+  "Kosmetik",
+];
 ---
 
 <div class="category-buttons">
-  {categories.map((category, index) => (
-    <button
-      class={`category-btn ${index === 0 ? "active" : ""}`}
-      data-category={category}
-    >
-      {category}
-    </button>
-  ))}
+  {
+    categories.map((category, index) => (
+      <button
+        class={`category-btn ${index === 0 ? "active" : ""}`}
+        data-category={category}
+      >
+        {category}
+      </button>
+    ))
+  }
 </div>
 
 <script>
@@ -24,7 +31,10 @@ const categories: string[] = ["Semua Produk", "Minyak Herbal", "Suplemen", "Kosm
 
       const category = button.dataset.category;
       products.forEach((product) => {
-        if (category === "Semua Produk" || product.dataset.category === category) {
+        if (
+          category === "Semua Produk" ||
+          product.dataset.category === category
+        ) {
           product.style.display = "";
         } else {
           product.style.display = "none";
@@ -40,7 +50,6 @@ const categories: string[] = ["Semua Produk", "Minyak Herbal", "Suplemen", "Kosm
     justify-content: center;
     gap: 15px;
     padding: 15px 0;
-    background-color: white;
   }
 
   .category-btn {
@@ -53,7 +62,7 @@ const categories: string[] = ["Semua Produk", "Minyak Herbal", "Suplemen", "Kosm
   }
 
   .category-btn.active {
-    background-color: #3498db;
+    background-color: #13dc4c;
     color: white;
   }
 

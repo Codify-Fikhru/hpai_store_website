@@ -1,22 +1,29 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <Header />
-    <slot />
-    <Footer />
+    <div class="wrapper">
+      <Header />
+      <main class="main-content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>
 
@@ -27,17 +34,105 @@ const { title } = Astro.props;
     box-sizing: border-box;
   }
 
+  :root {
+    --primary-color: #2b8540;
+    --secondary-color: #f4f7f6;
+    --text-color: #2c3e50;
+    --spacing-unit: 1rem;
+  }
+
+  html,
   body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f4f7f6;
-    color: #2c3e50;
+    height: 100%;
+  }
+
+  body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: var(--spacing-unit) 0;
   }
 
   .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 var(--spacing-unit);
+  }
+
+  /* Responsive containers */
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+      padding: 0 calc(var(--spacing-unit) / 2);
+    }
+  }
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: var(--spacing-unit);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  /* Utility classes */
+  .section {
+    padding: calc(var(--spacing-unit) * 2) 0;
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--spacing-unit);
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Buttons */
+  button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+
+  /* Links */
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 </style>
