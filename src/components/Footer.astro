@@ -1,301 +1,182 @@
-<!-- Footer HTML -->
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-section brand">
-      <h3>HPAI Codify Store</h3>
-      <p>Solusi teknologi terdepan untuk bisnis anda.</p>
-      <div class="brand-info">
-        <div class="info-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Makassar, Indonesia</span>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .footer {
+        background: linear-gradient(135deg, #0c8f14 0%, #077d1f 100%);
+        color: white;
+        padding: 40px 20px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .footer-section h3 {
+        color: white;
+        margin-bottom: 15px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 10px;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 8px 0;
+        transition: all 0.3s ease;
+      }
+
+      .footer-section ul li a:hover {
+        color: white;
+        transform: translateX(10px);
+      }
+
+      .footer-section ul li a i {
+        margin-right: 10px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        transform: translateY(-5px);
+      }
+
+      .newsletter input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .newsletter button {
+        width: 100%;
+        padding: 10px;
+        background: white;
+        color: #11cb2d;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 20px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section brand">
+          <h3>HPAI Codify Store</h3>
+          <p>Solusi teknologi terdepan untuk bisnis anda.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a
+            >
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"
+              ><i class="fab fa-linkedin-in"></i></a
+            >
+          </div>
         </div>
-        <div class="info-item">
-          <i class="fas fa-envelope"></i>
-          <span>support @jokiofficialyt.com</span>
+
+        <div class="footer-section links">
+          <h3>Navigasi</h3>
+          <ul>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Beranda</a>
+            </li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Produk</a></li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Layanan</a>
+            </li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+          </ul>
         </div>
-        <div class="info-item">
-          <i class="fas fa-phone"></i>
-          <span>+62 822 9386 4583</span>
+
+        <div class="footer-section services">
+          <h3>Layanan Kami</h3>
+          <ul>
+            <li>
+              <a href="#"><i class="fas fa-check"></i> Web Development</a>
+            </li>
+            <li><a href="#"><i class="fas fa-check"></i> Mobile Apps</a></li>
+            <li>
+              <a href="#"><i class="fas fa-check"></i> Cloud Solutions</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-check"></i> Digital Marketing</a>
+            </li>
+          </ul>
         </div>
+
+        <div class="footer-section newsletter">
+          <h3>Berlangganan Newsletter</h3>
+          <input type="email" placeholder="Email Anda" required />
+          <button type="submit">Kirim</button>
+        </div>
+      </div> 
+
+      <div class="footer-bottom">
+        © 2024 HPAI Codify Store. All Rights Reserved.
       </div>
-    </div>
-
-    <div class="footer-section links">
-      <h4>Navigasi</h4>
-      <ul>
-        <li><a href="#"><i class="fas fa-chevron-right"></i> Beranda</a></li>
-        <li><a href="#"><i class="fas fa-chevron-right"></i> Produk</a></li>
-        <li><a href="#"><i class="fas fa-chevron-right"></i> Layanan</a></li>
-        <li><a href="#"><i class="fas fa-chevron-right"></i> Kontak</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section services">
-      <h4>Layanan Kami</h4>
-      <ul>
-        <li><a href="#"><i class="fas fa-check"></i> Web Development</a></li>
-        <li><a href="#"><i class="fas fa-check"></i> Mobile Apps</a></li>
-        <li><a href="#"><i class="fas fa-check"></i> Cloud Solutions</a></li>
-        <li><a href="#"><i class="fas fa-check"></i> Digital Marketing</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section social">
-      <h4>Ikuti Kami</h4>
-      <div class="social-icons">
-        <a href="#" class="social-icon facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" class="social-icon instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" class="social-icon twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="social-icon linkedin">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div class="copyright">
-      <p>© 2024 HPAI Codify Store. All Rights Reserved.</p>
-    </div>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Contact Us</a>
-    </div>
-  </div>
-</footer>
-
-<!-- CSS Styles -->
-<style>
-  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
-
-  .footer {
-    background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
-    color: #ffffff;
-    padding: 70px 0 20px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 0 20px;
-  }
-
-  .footer-section {
-    margin-bottom: 30px;
-  }
-
-  .footer-section h3 {
-    color: #3498db;
-    font-size: 24px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-  }
-
-  .footer-section h3::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 3px;
-    background: #3498db;
-    transition: width 0.3s ease;
-  }
-
-  .footer-section h3:hover::after {
-    width: 100px;
-  }
-
-  .footer-section h4 {
-    color: #ffffff;
-    font-size: 18px;
-    margin-bottom: 15px;
-    position: relative;
-    padding-bottom: 8px;
-  }
-
-  .footer-section h4::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 30px;
-    height: 2px;
-    background: #3498db;
-  }
-
-  .brand-info {
-    margin-top: 20px;
-  }
-
-  .info-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  .info-item i {
-    color: #3498db;
-    margin-right: 10px;
-    width: 20px;
-  }
-
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .footer-section ul li {
-    margin-bottom: 12px;
-  }
-
-  .footer-section ul li a {
-    color: #ecf0f1;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-  }
-
-  .footer-section ul li a i {
-    margin-right: 10px;
-    font-size: 12px;
-    color: #3498db;
-  }
-
-  .footer-section ul li a:hover {
-    color: #3498db;
-    transform: translateX(5px);
-  }
-
-  .social-icons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
-  }
-
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .social-icon:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  .facebook:hover {
-    background: #3b5998;
-  }
-  .instagram:hover {
-    background: #e1306c;
-  }
-  .twitter:hover {
-    background: #1da1f2;
-  }
-  .linkedin:hover {
-    background: #0077b5;
-  }
-
-  .newsletter {
-    margin-top: 20px;
-  }
-
-  .subscribe-form {
-    display: flex;
-    margin-top: 15px;
-  }
-
-  .subscribe-form input {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-radius: 5px 0 0 5px;
-  }
-
-  .subscribe-form input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  .subscribe-form button {
-    padding: 12px 20px;
-    border: none;
-    background: #3498db;
-    color: white;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  .subscribe-form button:hover {
-    background: #2980b9;
-  }
-
-  .footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .copyright {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 20px;
-  }
-
-  .footer-links a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .footer-links a:hover {
-    color: #3498db;
-  }
-
-  @media (max-width: 768px) {
-    .footer-content {
-      grid-template-columns: 1fr;
-    }
-
-    .footer-bottom {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .footer-links {
-      justify-content: center;
-    }
-  }
-</style>
+    </footer>
+  </body>
+</html>

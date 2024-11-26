@@ -63,76 +63,12 @@ const { title } = Astro.props;
 
   .main-content {
     flex: 1;
+    padding: 0;
+  }
+
+  .content-padding {
     padding: var(--spacing-unit) 0;
   }
 
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-unit);
-  }
-
-  /* Responsive containers */
-  @media (max-width: 768px) {
-    .container {
-      width: 95%;
-      padding: 0 calc(var(--spacing-unit) / 2);
-    }
-  }
-
-  /* Typography */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-bottom: var(--spacing-unit);
-    font-weight: 600;
-    line-height: 1.2;
-  }
-
-  /* Utility classes */
-  .section {
-    padding: calc(var(--spacing-unit) * 2) 0;
-  }
-
-  .grid {
-    display: grid;
-    gap: var(--spacing-unit);
-  }
-
-  .flex {
-    display: flex;
-  }
-
-  .flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Images */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Buttons */
-  button {
-    cursor: pointer;
-    border: none;
-    outline: none;
-  }
-
-  /* Links */
-  a {
-    color: var(--primary-color);
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
+  ...
 </style>

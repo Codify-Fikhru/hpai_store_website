@@ -1,7 +1,3 @@
----
-
----
-
 <div class="cart-icon-container">
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -25,9 +21,62 @@
 <script>
   let cart = [];
 
-  document.querySelector(".cart-icon")?.addEventListener("click", showCart);
+  document
+    .querySelector(".cart-icon-container")
+    ?.addEventListener("click", toggleCart);
+
+  function toggleCart() {
+    const existingModal = document.querySelector(".cart-modal");
+    if (existingModal) {
+      document.body.removeChild(existingModal);
+    } else {
+      showCart();
+    }
+  }
+
+  function updateCartIcon() {
+    let totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    const cartCount = document.querySelector(".cart-count");
+    if (!cartCount && totalCount > 0) {
+      const countBadge = document.createElement("div");
+      countBadge.classList.add("cart-count");
+      countBadge.textContent = totalCount;
+      document.querySelector(".cart-icon-container").appendChild(countBadge);
+    } else if (cartCount) {
+      cartCount.textContent = totalCount > 0 ? totalCount : "";
+      if (totalCount === 0) cartCount.remove();
+    }
+  }
+
+  function addItem(item) {
+    const existingItem = cart.find((i) => i.id === item.id);
+    if (existingItem) {
+      existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+      cart.push({ ...item, quantity: 1 });
+    }
+    updateCartIcon();
+    showCart();
+  }
+
+  function updateQuantity(itemId, change) {
+    const itemIndex = cart.findIndex((item) => item.id === itemId);
+    if (itemIndex !== -1) {
+      const newQuantity = (cart[itemIndex].quantity || 1) + change;
+      if (newQuantity > 0) {
+        cart[itemIndex].quantity = newQuantity;
+      } else {
+        cart.splice(itemIndex, 1);
+      }
+      updateCartIcon();
+      showCart();
+    }
+  }
 
   function showCart() {
+    const existingModal = document.querySelector(".cart-modal");
+    if (existingModal) document.body.removeChild(existingModal);
+
     const modal = document.createElement("div");
     modal.classList.add("cart-modal");
 
@@ -37,65 +86,108 @@
     );
 
     modal.innerHTML = `
-        <div class="cart-content">
-          <div class="cart-header">
-            <h2>Keranjang Belanja</h2>
-            <button class="close-cart">&times;</button>
-          </div>
-          <div class="cart-items">
-            ${
-              cart.length
-                ? cart
-                    .map(
-                      (item) => `
-              <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}">
-                <div class="item-details">
-                  <h3>${item.name}</h3>
-                  <p>Rp${item.price.toLocaleString()}</p>
-                  <div class="quantity">
-                    <button onclick="updateQuantity(${item.id}, -1)">-</button>
-                    <span>${item.quantity}</span>
-                    <button onclick="updateQuantity(${item.id}, 1)">+</button>
-                  </div>
-                </div>
+    <div class="cart-content">
+      <div class="cart-header">
+        <h2>Keranjang Belanja</h2>
+        <button class="close-cart">&times;</button>
+      </div>
+      <div class="cart-items">
+        ${
+          cart.length
+            ? cart
+                .map(
+                  (item) => `
+          <div class="cart-item">
+            <div class="item-image">
+              <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="item-details">
+              <h3>${item.name}</h3>
+              <p class="item-price">Rp${item.price.toLocaleString()}</p>
+              <div class="quantity-controls">
+                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                <span class="quantity-display">${item.quantity || 1}</span>
+                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
               </div>
-            `
-                    )
-                    .join("")
-                : "<p>Keranjang kosong</p>"
-            }
+            </div>
           </div>
-          <div class="cart-footer">
-            <div class="cart-total">Total: Rp${total.toLocaleString()}</div>
-            <button class="checkout-btn">Checkout</button>
-          </div>
-        </div>
-      `;
+        `
+                )
+                .join("")
+            : '<div class="empty-cart"><p>Keranjang kosong</p></div>'
+        }
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">Total: Rp${total.toLocaleString()}</div>
+        ${
+          cart.length
+            ? '<button class="checkout-btn" onclick="checkout()">Checkout</button>'
+            : ""
+        }
+      </div>
+    </div>
+  `;
 
     document.body.appendChild(modal);
 
     modal.querySelector(".close-cart")?.addEventListener("click", () => {
       document.body.removeChild(modal);
     });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        document.body.removeChild(modal);
+      }
+    });
+  }
+
+  function checkout() {
+    alert("Pesanan Anda telah diterima!");
+    cart = [];
+    updateCartIcon();
+    showCart();
   }
 </script>
 
 <style>
+  /* Tambahkan style untuk container keranjang */
   .cart-icon-container {
     position: relative;
     cursor: pointer;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Style untuk icon keranjang */
   .cart-icon {
     color: white;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
   }
 
-  .cart-icon:hover {
-    transform: scale(1.2);
+  .cart-icon-container:hover .cart-icon {
+    transform: scale(1.1);
   }
 
+  /* Badge jumlah item */
+  .cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  /* Modal keranjang */
   .cart-modal {
     position: fixed;
     top: 0;
@@ -105,15 +197,207 @@
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     z-index: 1000;
+    padding-top: 80px;
   }
 
+  /* Konten keranjang */
   .cart-content {
     background: white;
-    padding: 20px;
-    border-radius: 10px;
+    border-radius: 16px;
     width: 90%;
-    max-width: 500px;
+    max-width: 600px;
+    max-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    animation: slideIn 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Animasi muncul */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Header keranjang */
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: white;
+    border-bottom: 1px solid #edf2f7;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .cart-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #2d3748;
+    font-weight: 600;
+  }
+
+  .close-cart {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #4a5568;
+  }
+
+  /* Area scroll untuk item */
+  .cart-items {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 200px;
+  }
+
+  /* Style untuk cart kosong */
+  .empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    color: #718096;
+    height: 100%;
+  }
+
+  .empty-cart svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    color: #a0aec0;
+  }
+
+  .empty-cart p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  /* Footer keranjang */
+  .cart-footer {
+    padding: 16px 20px;
+    background: white;
+    border-top: 1px solid #edf2f7;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  /* Tombol checkout */
+  .checkout-btn {
+    width: 100%;
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .checkout-btn:hover {
+    background: #059669;
+  }
+
+  /* Responsive design */
+  @media (max-width: 640px) {
+    .cart-modal {
+      padding-top: 0;
+    }
+
+    .cart-content {
+      width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      border-radius: 0;
+    }
+
+    .cart-items {
+      padding: 16px;
+    }
+  }
+
+  /* Style untuk item dalam keranjang */
+  .cart-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+
+  .item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 16px;
+  }
+
+  .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .item-details {
+    flex: 1;
+  }
+
+  .item-details h3 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+    color: #2d3748;
+  }
+
+  .item-price {
+    color: #10b981;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+
+  /* Controls quantity */
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .quantity-btn {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #4a5568;
+  }
+
+  .quantity-btn:hover {
+    background: #f7fafc;
+  }
+
+  .quantity-display {
+    font-weight: 600;
+    color: #2d3748;
+    min-width: 24px;
+    text-align: center;
   }
 </style>

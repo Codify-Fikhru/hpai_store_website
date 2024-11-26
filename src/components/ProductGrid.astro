@@ -21,7 +21,7 @@ const productData: ProductData[] = [
     category: "Susu Kambing",
   },
   {
-    name: "Minyak Nigella Hitam",
+    name: "Minyak Zaitun",
     image: "/public/image/Minyak Habbatussauda.png ",
     category: "Minyak Herbal",
   },
@@ -41,20 +41,53 @@ const productData: ProductData[] = [
     category: "Suplemen",
   },
   {
-    name: "Odol Siwak",
-    image: "/public/image/odol.png",
+    name: "Pasta Gigi Herbal",
+    image: "/public/image/PastaGigi.png",
     category: "Odol Siwak",
+  },
+  {
+    name: "Day Cream",
+    image: "/public/image/DayCream.png",
+    category: "Day Crean",
+  },
+  {
+    name: "Day Cream",
+    image: "/public/image/DayCream.png",
+    category: "Day Crean",
+  },
+  {
+    name: "Day Cream",
+    image: "/public/image/DayCream.png",
+    category: "Day Crean",
+  },
+  {
+    name: "Day Cream",
+    image: "/public/image/DayCream.png",
+    category: "Day Crean",
   },
 ];
 
-const products: Product[] = Array.from({ length: 5 }, (_, i) => {
+const getProductPrice = (productName: string): number => {
+  const prices: { [key: string]: number } = {
+    "Susu Kambing": 75000,
+    "Minyak Zaitun": 90000,
+    "Minyak Herba Sinergi": 45000,
+    "Supplement Immune Boost": 185000,
+    "Vitamin C Plus Zinc": 95000,
+    "Pasta Gigi Herbal": 20000,
+    "Day Cream": 165000,
+  };
+  return prices[productName];
+};
+
+const products: Product[] = Array.from({ length: 10 }, (_, i) => {
   const currentProduct = productData[i];
 
   return {
     id: i + 1,
     name: currentProduct.name,
     category: currentProduct.category,
-    price: Math.floor(Math.random() * 500000) + 50000,
+    price: getProductPrice(currentProduct.name),
     image: currentProduct.image,
   };
 });

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login HPAI HNI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-teal-100 to-teal-300 flex items-center justify-center p-4"
+  >
+    <div
+      class="w-full max-w-4xl bg-white shadow-2xl rounded-2xl overflow-hidden flex"
+    >
+      <!-- Bagian Formulir Login -->
+      <div class="w-1/2 p-12 flex flex-col justify-center">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold text-green-700 mb-2">Selamat Datang</h1>
+          <p class="text-gray-500">Silakan masuk ke akun Anda</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+            >
+              <i class="fas fa-user text-gray-400"></i>
+            </div>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              required
+              minlength="3"
+              class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+          </div>
+
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+            >
+              <i class="fas fa-lock text-gray-400"></i>
+            </div>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+              minlength="6"
+              class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+          </div>
+
+          <div
+            id="errorMessage"
+            class="text-red-500 text-sm text-center hidden"
+          >
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition duration-300 flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Masuk</span>
+          </button>
+        </form>
+
+        <!-- Tombol Login Google -->
+        <div class="mt-4 text-center">
+          <div
+            id="g_id_onload"
+            data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+            data-callback="handleGoogleSignIn"
+            data-auto_select="true"
+          >
+          </div>
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-size="large"
+            data-theme="outline"
+            data-text="sign_in_with"
+            data-shape="rectangular"
+            data-logo_alignment="left"
+          >
+          </div>
+        </div>
+
+        <div class="mt-6 text-center text-sm">
+          <p>
+            Belum punya akun?
+            <a href="#" class="text-teal-600 hover:underline">Daftar di sini</a>
+          </p>
+          <a href="#" class="text-teal-600 hover:underline mt-2 inline-block">
+            Lupa password?
+          </a>
+        </div>
+      </div>
+
+      <!-- Bagian Animasi/Ilustrasi -->
+      <div
+        class="w-1/2 bg-gradient-to-br from-green-500 to-teal-700 flex items-center justify-center p-8"
+      >
+        <img
+          src="https://i.ytimg.com/vi/4H75xt9U_d4/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgWigvMA8=&rs=AOn4CLCzLhsb0uWJ4HfT74kfBKaqH0_zWw"
+          alt="HPAI Animation"
+          class="max-w-full h-auto rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </body>
+</html>
