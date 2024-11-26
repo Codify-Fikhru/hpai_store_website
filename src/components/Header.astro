@@ -1,6 +1,5 @@
 ---
 import SearchBar from "./SearchBar.astro";
-import CartIcon from "./CartIcon.astro";
 ---
 
 <header class="professional-header">
@@ -39,204 +38,70 @@ import CartIcon from "./CartIcon.astro";
         <div class="search-container">
           <SearchBar />
         </div>
+      </div>
 
-        <div class="actions-container">
-          <a href="/pages/login" class="login-button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span class="login-text">Masuk</span>
-          </a>
-          <div class="cart-container">
-            <CartIcon />
-          </div>
-        </div>
+      <div class="actions-container">
+        <a href="/src/pages/login.astro" class="login-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          Login
+        </a>
       </div>
     </div>
   </nav>
-</header>
 
-<style>
-  .professional-header {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 0.75rem 1.5rem;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .professional-header.scrolled {
-    background: rgba(6, 153, 13, 0.95);
-    border-bottom: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  }
-
-  .header-content {
-    display: flex;
-    flex-direction: column;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .mobile-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem 0;
-  }
-
-  .mobile-bottom {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    padding-top: 0.5rem;
-  }
-
-  .mobile-bottom.active {
-    display: flex;
-  }
-
-  .right-section {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .actions-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .login-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.15);
-    transition: all 0.3s ease;
-  }
-
-  .login-button:hover {
-    background: rgba(255, 255, 255, 0.25);
-  }
-
-  .login-button .icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .mobile-menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .mobile-menu-toggle span {
-    width: 100%;
-    height: 3px;
-    background-color: white;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
-
-  .logo-container {
-    flex-shrink: 0;
-  }
-
-  .logo-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .logo-icon {
-    width: 42px;
-    height: 42px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .logo-icon img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-  }
-
-  .nav-menu {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-
-  .store-title {
-    color: white;
-    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-    font-weight: 700;
-    margin: 0;
-  }
-
-  .search-container {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Mobile styles */
-  @media (max-width: 768px) {
+  <style>
     .professional-header {
-      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.75rem 1.5rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .mobile-menu-toggle {
+    .professional-header.scrolled {
+      background: rgba(6, 153, 13, 0.95);
+      border-bottom: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-content {
       display: flex;
+      flex-direction: column;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0.5rem 0;
     }
 
     .mobile-bottom {
       display: none;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 0.5rem;
     }
 
     .mobile-bottom.active {
@@ -244,108 +109,239 @@ import CartIcon from "./CartIcon.astro";
     }
 
     .right-section {
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .nav-menu {
-      flex-direction: column;
-      width: 100%;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-link {
-      width: 100%;
-      text-align: center;
-      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
 
     .actions-container {
-      width: 100%;
-      justify-content: center;
-      padding: 0.5rem 0;
-    }
-
-    .login-text {
-      display: none;
-    }
-
-    .store-title {
-      font-size: 1.1rem;
-    }
-
-    .logo-icon {
-      width: 38px;
-      height: 38px;
-    }
-
-    .logo-icon img {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
-  /* Desktop styles */
-  @media (min-width: 769px) {
-    .header-content {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    .mobile-top {
-      width: auto;
-      padding: 0;
-    }
-
-    .mobile-bottom {
       display: flex;
-      flex-direction: row;
       align-items: center;
-      justify-content: space-between;
-      gap: 2.5rem;
-      padding-top: 0;
-      flex: 1;
+      gap: 1rem;
+    }
+
+    .login-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .login-button:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .login-button .icon {
+      width: 20px;
+      height: 20px;
     }
 
     .mobile-menu-toggle {
       display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
     }
 
-    .search-container {
-      width: 300px;
+    .mobile-menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .logo-container {
+      flex-shrink: 0;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-icon img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
     }
 
     .nav-menu {
-      flex-direction: row;
-    }
-  }
-</style>
-
-<script>
-  const header = document.querySelector(".professional-header");
-  const menuToggle = document.querySelector(".mobile-menu-toggle");
-  const mobileBottom = document.querySelector(".mobile-bottom");
-  let lastScroll = 0;
-
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
     }
 
-    lastScroll = currentScroll;
-  });
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
 
-  menuToggle.addEventListener("click", () => {
-    mobileBottom.classList.toggle("active");
-    menuToggle.classList.toggle("active");
-  });
-</script>
+    .store-title {
+      color: white;
+      font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .search-container {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .professional-header {
+        padding: 0.5rem 1rem;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .mobile-bottom {
+        display: none;
+      }
+
+      .mobile-bottom.active {
+        display: flex;
+      }
+
+      .right-section {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+
+      .actions-container {
+        width: 100%;
+        justify-content: center;
+        padding: 0.5rem 0;
+      }
+
+      .login-text {
+        display: none;
+      }
+
+      .store-title {
+        font-size: 1.1rem;
+      }
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .logo-icon img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    /* Desktop styles */
+    @media (min-width: 769px) {
+      .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2.5rem;
+      }
+
+      .mobile-top {
+        width: auto;
+        padding: 0;
+      }
+
+      .mobile-bottom {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2.5rem;
+        padding-top: 0;
+        flex: 1;
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+      }
+
+      .search-container {
+        width: 300px;
+      }
+
+      .nav-menu {
+        flex-direction: row;
+      }
+    }
+  </style>
+
+  <script>
+    const header = document.querySelector(".professional-header");
+    const menuToggle = document.querySelector(".mobile-menu-toggle");
+    const mobileBottom = document.querySelector(".mobile-bottom");
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+      lastScroll = currentScroll;
+    });
+
+    menuToggle.addEventListener("click", () => {
+      mobileBottom.classList.toggle("active");
+      menuToggle.classList.toggle("active");
+    });
+  </script>
+</header>
