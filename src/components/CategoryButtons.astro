@@ -1,56 +1,65 @@
 ---
-const categories: string[] = [
-  "Semua Produk",
-  "Minyak Herbal",
-  "Suplemen",
-  "Kosmetik",
+interface Category {
+  name: string;
+  id: string;
+}
+
+const categories: Category[] = [
+  { name: "Semua Produk", id: "all" },
+  { name: "Produk Herbal", id: "herbal" },
+  { name: "Makanan Kesehatan & Minuman", id: "health-food" },
+  { name: "Kosmetik & Perawatan Rumah", id: "cosmetics" },
 ];
 ---
 
-<div class="category-buttons">
-  {
-    categories.map((category, index) => (
-      <button
-        class={`category-btn ${index === 0 ? "active" : ""}`}
-        data-category={category}
-      >
-        {category}
-      </button>
-    ))
-  }
+<div class="product-grid-container">
+  <div class="category-filter">
+    {
+      categories.map((category, index) => (
+        <button
+          class={`category-btn ${index === 0 ? "active" : ""}`}
+          data-category={category.id}
+        >
+          {category.name}
+        </button>
+      ))
+    }
+  </div>
 </div>
 
 <script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>(".category-btn");
-  const products = document.querySelectorAll<HTMLDivElement>(".product-card");
+  document.addEventListener("DOMContentLoaded", () => {
+    const categoryButtons = document.querySelector(".category-filter");
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      buttons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
+    categoryButtons?.addEventListener("click", (event) => {
+      const target = event.target as HTMLButtonElement;
 
-      const category = button.dataset.category;
-      products.forEach((product) => {
-        if (
-          category === "Semua Produk" ||
-          product.dataset.category === category
-        ) {
-          product.style.display = "";
-        } else {
-          product.style.display = "none";
-        }
-      });
+      if (target.classList.contains("category-btn")) {
+        // Remove active class from all buttons
+        categoryButtons
+          .querySelectorAll(".category-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+
+        // Add active class to clicked button
+        target.classList.add("active");
+      }
     });
   });
 </script>
 
 <style>
-  .category-buttons {
+  .product-grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .category-filter {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
-    padding: 20px 0;
+    margin-bottom: 30px;
     flex-wrap: wrap;
   }
 
@@ -65,6 +74,7 @@ const categories: string[] = [
     transition: all 0.3s ease-in-out;
     outline: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
   }
 
   .category-btn:hover {
@@ -73,19 +83,14 @@ const categories: string[] = [
   }
 
   .category-btn.active {
-    background-color: #10b981; /* Hijau modern */
+    background-color: #10b981;
     border-color: #10b981;
     color: white;
     box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
   }
 
-  .category-btn.active:hover {
-    background-color: #059669;
-    border-color: #059669;
-  }
-
-  @media (max-width: 480px) {
-    .category-buttons {
+  @media (max-width: 768px) {
+    .category-filter {
       gap: 8px;
     }
 

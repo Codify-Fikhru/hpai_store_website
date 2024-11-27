@@ -1,216 +1,860 @@
 ---
-// Define interfaces
+// ProductGrid.astro
 interface Product {
-  id: number;
+  id: string;
   name: string;
+  description: string;
   category: string;
   price: number;
-  image: string;
+  imageUrl: string;
+  rating: number;
 }
 
-interface ProductData {
-  name: string;
-  image: string;
-  category: string;
-}
-
-const productData: ProductData[] = [
+const products: Product[] = [
   {
-    name: "Susu Kambing",
-    image: "/image/susukambing.png",
-    category: "Susu Kambing",
+    id: "herbal-1",
+    name: "Andrographis Centella",
+    description: "Produk herbal berkualitas tinggi",
+    category: "herbal",
+    price: 85000,
+    imageUrl: " /image/Andrographis.png",
+    rating: 4.5,
   },
   {
-    name: "Minyak Zaitun",
-    image: "/image/Minyak Habbatussauda.png ",
-    category: "Minyak Herbal",
+    id: "herbal-2",
+    name: "Bilberry",
+    description: "Minuman kesehatan dengan bahan-bahan pilihan",
+    category: "herbal",
+    price: 150000,
+    imageUrl: "/image/Bilberry.png",
+    rating: 4.2,
   },
   {
+    id: "herbal-3",
+    name: "Biosir",
+    description: "Kosmetik modern untuk perawatan kulit",
+    category: "herbal",
+    price: 90000,
+    imageUrl: "/image/Biosir.png",
+    rating: 4.7,
+  },
+  {
+    id: "herbal-4",
+    name: "Carnocap",
+    description: "Kombinasi herbal untuk kesehatan optimal",
+    category: "herbal",
+    price: 120000,
+    imageUrl: "/image/Carnocap.png",
+    rating: 4.3,
+  },
+  {
+    id: "herbal-5",
+    name: "Deep Squalene",
+    description: "Minuman kesehatan dengan bahan alami",
+    category: "herbal",
+    price: 250000,
+    imageUrl: "/image/DeepSqualene.png",
+    rating: 4.1,
+  },
+  {
+    id: "herbal-6",
+    name: "Diabextrac",
+    description: "Perawatan kulit dengan bahan alami",
+    category: "herbal",
+    price: 130000,
+    imageUrl: "/image/Diabextrac.png",
+    rating: 4.6,
+  },
+  {
+    id: "herbal-7",
+    name: "Gamat Kapsul",
+    description: "Produk herbal untuk perawatan kulit",
+    category: "herbal",
+    price: 130000,
+    imageUrl: "/image/Gamat.png",
+    rating: 4.4,
+  },
+  {
+    id: "health-drink-3",
+    name: "Ginextrac",
+    description: "Minuman kesehatan dengan bahan alami",
+    category: "herbal",
+    price: 110000,
+    imageUrl: "/image/Ginextrac.png",
+    rating: 4.2,
+  },
+  {
+    id: "cosmetic-3",
+    name: "Habbatussauda Kapsul",
+    description: "Perawatan kulit dengan bahan alami",
+    category: "herbal",
+    price: 95000,
+    imageUrl: "/image/Habbatussauda.png",
+    rating: 4.7,
+  },
+  {
+    id: "herbal-4",
+    name: "Harumi",
+    description: "Produk herbal untuk perawatan kulit",
+    category: "herbal",
+    price: 60000,
+    imageUrl: "/image/Harumi.png",
+    rating: 4.3,
+  },
+  {
+    id: "health-drink-4",
+    name: "Langsingin",
+    description: "Minuman kesehatan dengan bahan alami",
+    category: "herbal",
+    price: 90000,
+    imageUrl: "/image/Langsingin.png",
+    rating: 4.1,
+  },
+  {
+    id: "cosmetic-4",
+    name: "Laurik",
+    description: "Perawatan kulit dengan bahan alami",
+    category: "herbal",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-4.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-1",
+    name: "Mengkudu",
+    description: "Perawatan kulit dengan bahan alami",
+    category: "herbal",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-1.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-2",
     name: "Minyak Herba Sinergi",
-    image: "/image/Minyak Sinergi.png",
-    category: "Minyak Herbal",
+    description: "Melembabkan dan menenangkan kulit",
+    category: "herbal",
+    price: 75000,
+    imageUrl: "/placeholder-cosmetic-2.jpg",
+    rating: 4.7,
   },
   {
-    name: "Supplement Immune Boost",
-    image: "/image/suplemen.png",
-    category: "Suplemen",
+    id: "cosmetic-3",
+    name: "Rosella",
+    description: "Mengatasi jerawat dan peradangan kulit",
+    category: "herbal",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-3.jpg",
+    rating: 4.8,
   },
   {
-    name: "Vitamin C Plus Zinc",
-    image: "/image/vitamin C.png",
-    category: "Suplemen",
+    id: "cosmetic-4",
+    name: "Truson",
+    description: "Aromaterapi untuk relaksasi kulit",
+    category: "herbal",
+    price: 90000,
+    imageUrl: "/placeholder-cosmetic-4.jpg",
+    rating: 4.5,
   },
   {
-    name: "Pasta Gigi Herbal",
-    image: "/image/PastaGigi.png",
-    category: "Odol Siwak",
+    id: "cosmetic-5",
+    name: "Kelosin",
+    description: "Menyegarkan dan menyeimbangkan pH kulit",
+    category: "herbal",
+    price: 60000,
+    imageUrl: "/placeholder-cosmetic-5.jpg",
+    rating: 4.6,
   },
   {
-    name: "Day Cream",
-    image: "/image/DayCream.png",
-    category: "Day Crean",
+    id: "cosmetic-6",
+    name: "Procumin Propolis",
+    description: "Antioksidan untuk kulit sehat",
+    category: "herbal",
+    price: 120000,
+    imageUrl: "/placeholder-cosmetic-6.jpg",
+    rating: 4.7,
   },
   {
-    name: "Day Cream",
-    image: "/image/DayCream.png",
-    category: "Day Crean",
+    id: "cosmetic-7",
+    name: "Procumin Habbatussauda Rich E",
+    description: "Menenangkan kulit sensitif dan iritasi",
+    category: "herbal",
+    price: 80000,
+    imageUrl: "/placeholder-cosmetic-7.jpg",
+    rating: 4.6,
   },
   {
-    name: "Day Cream",
-    image: "/image/DayCream.png",
-    category: "Day Crean",
+    id: "cosmetic-8",
+    name: "Mustika Dara",
+    description: "Menyembuhkan dan mengurangi peradangan",
+    category: "herbal",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-8.jpg",
+    rating: 4.7,
   },
   {
-    name: "Day Cream",
-    image: "/image/DayCream.png",
-    category: "Day Crean",
+    id: "cosmetic-9",
+    name: "Peppermint Oil",
+    description: "Segarkan kulit dan memberikan sensasi dingin",
+    category: "herbal",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-9.jpg",
+    rating: 4.8,
+  },
+  {
+    id: "cosmetic-10",
+    name: "Jojoba Oil",
+    description: "Melembapkan dan memperbaiki tekstur kulit",
+    category: "herbal",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-10.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-11",
+    name: "Eucalyptus Oil",
+    description: "Menyegarkan kulit dan memberikan efek relaksasi",
+    category: "herbal",
+    price: 100000,
+    imageUrl: "/placeholder-cosmetic-11.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-12",
+    name: "Ginseng Extract",
+    description: "Menyegarkan dan meremajakan kulit",
+    category: "herbal",
+    price: 120000,
+    imageUrl: "/placeholder-cosmetic-12.jpg",
+    rating: 4.8,
+  },
+  {
+    id: "cosmetic-13",
+    name: "Neem Oil",
+    description: "Mengatasi jerawat dan mengurangi peradangan",
+    category: "herbal",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-13.jpg",
+    rating: 4.5,
+  },
+  {
+    id: "cosmetic-14",
+    name: "Coconut Oil",
+    description: "Melembapkan dan menghaluskan kulit",
+    category: "herbal",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-14.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-1",
+    name: "Coconut Oil",
+    description: "Melembapkan dan menghaluskan kulit",
+    category: "health-food",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-1.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-2",
+    name: "Honey",
+    description: "Pemulihan kulit dengan bahan alami",
+    category: "health-food",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-2.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-3",
+    name: "Turmeric Powder",
+    description: "Menjaga kesehatan kulit dan tubuh",
+    category: "health-food",
+    price: 70000,
+    imageUrl: "/placeholder-cosmetic-3.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-4",
+    name: "Chia Seeds",
+    description: "Superfood untuk tubuh dan kulit sehat",
+    category: "health-food",
+    price: 80000,
+    imageUrl: "/placeholder-cosmetic-4.jpg",
+    rating: 4.8,
+  },
+  {
+    id: "cosmetic-5",
+    name: "Matcha Powder",
+    description: "Meningkatkan energi dan kesehatan kulit",
+    category: "health-food",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-5.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-6",
+    name: "Avocado Oil",
+    description: "Melembapkan dan memberi nutrisi pada kulit",
+    category: "health-food",
+    price: 105000,
+    imageUrl: "/placeholder-cosmetic-6.jpg",
+    rating: 4.8,
+  },
+  {
+    id: "cosmetic-7",
+    name: "Olive Oil",
+    description: "Melembapkan dan melindungi kulit",
+    category: "health-food",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-7.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-8",
+    name: "Lemon Juice",
+    description: "Mencerahkan dan menyegarkan kulit",
+    category: "health-food",
+    price: 70000,
+    imageUrl: "/placeholder-cosmetic-8.jpg",
+    rating: 4.5,
+  },
+  {
+    id: "cosmetic-9",
+    name: "Almond Butter",
+    description: "Sumber protein sehat dan bergizi",
+    category: "health-food",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-9.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-10",
+    name: "Flax Seeds",
+    description: "Meningkatkan kesehatan pencernaan dan kulit",
+    category: "health-food",
+    price: 90000,
+    imageUrl: "/placeholder-cosmetic-10.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-11",
+    name: "Cocoa Powder",
+    description: "Antioksidan alami untuk kulit dan tubuh",
+    category: "health-food",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-11.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-12",
+    name: "Acai Berry",
+    description: "Meningkatkan kesehatan tubuh dan kulit",
+    category: "health-food",
+    price: 105000,
+    imageUrl: "/placeholder-cosmetic-12.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-13",
+    name: "Moringa Powder",
+    description: "Superfood untuk energi dan kesehatan kulit",
+    category: "health-food",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-13.jpg",
+    rating: 4.8,
+  },
+  {
+    id: "cosmetic-14",
+    name: "Coconut Oil",
+    description: "Melembapkan dan menghaluskan kulit",
+    category: "health-food",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-14.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-15",
+    name: "Ginger Root",
+    description: "Mengatasi peradangan dan meningkatkan daya tahan tubuh",
+    category: "health-food",
+    price: 75000,
+    imageUrl: "/placeholder-cosmetic-15.jpg",
+    rating: 4.5,
+  },
+  {
+    id: "cosmetic-16",
+    name: "Goji Berries",
+    description: "Superfood kaya antioksidan untuk kulit sehat",
+    category: "health-food",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-16.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-17",
+    name: "Pumpkin Seeds",
+    description: "Sumber magnesium dan zinc untuk kulit dan kesehatan tubuh",
+    category: "health-food",
+    price: 80000,
+    imageUrl: "/placeholder-cosmetic-17.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-1",
+    name: "Aloe Vera Gel",
+    description: "Melembapkan dan menenangkan kulit",
+    category: "cosmetics",
+    price: 75000,
+    imageUrl: "/placeholder-cosmetic-1.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-2",
+    name: "Rose Water",
+    description: "Menyegarkan dan melembapkan wajah",
+    category: "cosmetics",
+    price: 50000,
+    imageUrl: "/placeholder-cosmetic-2.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-3",
+    name: "Charcoal Mask",
+    description: "Menghilangkan minyak berlebih dan kotoran",
+    category: "cosmetics",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-3.jpg",
+    rating: 4.5,
+  },
+  {
+    id: "cosmetic-4",
+    name: "Lip Balm",
+    description: "Melindungi dan melembapkan bibir",
+    category: "cosmetics",
+    price: 30000,
+    imageUrl: "/placeholder-cosmetic-4.jpg",
+    rating: 4.8,
+  },
+  {
+    id: "cosmetic-5",
+    name: "Vitamin C Serum",
+    description: "Mencerahkan kulit dan mengurangi bintik hitam",
+    category: "cosmetics",
+    price: 120000,
+    imageUrl: "/placeholder-cosmetic-5.jpg",
+    rating: 4.9,
+  },
+  {
+    id: "cosmetic-6",
+    name: "Hyaluronic Acid",
+    description: "Menghidrasi kulit secara mendalam",
+    category: "cosmetics",
+    price: 110000,
+    imageUrl: "/placeholder-cosmetic-6.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-7",
+    name: "Face Scrub",
+    description: "Mengangkat sel kulit mati untuk kulit cerah",
+    category: "cosmetics",
+    price: 80000,
+    imageUrl: "/placeholder-cosmetic-7.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-8",
+    name: "Makeup Remover",
+    description: "Membersihkan makeup dengan lembut",
+    category: "cosmetics",
+    price: 90000,
+    imageUrl: "/placeholder-cosmetic-8.jpg",
+    rating: 4.8,
+  },
+  {
+    id: "cosmetic-9",
+    name: "Sunscreen SPF 50",
+    description: "Melindungi kulit dari sinar UV",
+    category: "cosmetics",
+    price: 95000,
+    imageUrl: "/placeholder-cosmetic-9.jpg",
+    rating: 4.9,
+  },
+  {
+    id: "cosmetic-10",
+    name: "Night Cream",
+    description: "Memperbaiki kulit saat tidur",
+    category: "cosmetics",
+    price: 130000,
+    imageUrl: "/placeholder-cosmetic-10.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-11",
+    name: "BB Cream",
+    description: "Menyamarkan noda dan memberikan perlindungan",
+    category: "cosmetics",
+    price: 85000,
+    imageUrl: "/placeholder-cosmetic-11.jpg",
+    rating: 4.5,
+  },
+  {
+    id: "cosmetic-12",
+    name: "Lipstick",
+    description: "Memberikan warna alami dan tahan lama",
+    category: "cosmetics",
+    price: 75000,
+    imageUrl: "/placeholder-cosmetic-12.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-13",
+    name: "Blush Powder",
+    description: "Memberikan rona segar pada wajah",
+    category: "cosmetics",
+    price: 60000,
+    imageUrl: "/placeholder-cosmetic-13.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-14",
+    name: "Mascara",
+    description: "Mempertegas bulu mata dengan hasil natural",
+    category: "cosmetics",
+    price: 100000,
+    imageUrl: "/placeholder-cosmetic-14.jpg",
+    rating: 4.8,
+  },
+  {
+    id: "cosmetic-15",
+    name: "Eye Shadow Palette",
+    description: "Pilihan warna untuk riasan mata cantik",
+    category: "cosmetics",
+    price: 180000,
+    imageUrl: "/placeholder-cosmetic-15.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-16",
+    name: "Compact Powder",
+    description: "Menyerap minyak dan memberikan hasil matte",
+    category: "cosmetics",
+    price: 70000,
+    imageUrl: "/placeholder-cosmetic-16.jpg",
+    rating: 4.6,
+  },
+  {
+    id: "cosmetic-17",
+    name: "Nail Polish",
+    description: "Memberikan warna cerah dan tahan lama pada kuku",
+    category: "cosmetics",
+    price: 40000,
+    imageUrl: "/placeholder-cosmetic-17.jpg",
+    rating: 4.5,
+  },
+  {
+    id: "cosmetic-18",
+    name: "Eyebrow Pencil",
+    description: "Membentuk dan mempertegas alis",
+    category: "cosmetics",
+    price: 50000,
+    imageUrl: "/placeholder-cosmetic-18.jpg",
+    rating: 4.7,
+  },
+  {
+    id: "cosmetic-19",
+    name: "Perfume Roll-on",
+    description: "Memberikan aroma segar sepanjang hari",
+    category: "cosmetics",
+    price: 65000,
+    imageUrl: "/placeholder-cosmetic-19.jpg",
+    rating: 4.8,
   },
 ];
 
-const getProductPrice = (productName: string): number => {
-  const prices: { [key: string]: number } = {
-    "Susu Kambing": 75000,
-    "Minyak Zaitun": 90000,
-    "Minyak Herba Sinergi": 45000,
-    "Supplement Immune Boost": 185000,
-    "Vitamin C Plus Zinc": 95000,
-    "Pasta Gigi Herbal": 20000,
-    "Day Cream": 165000,
-  };
-  return prices[productName];
+const categories = [
+  "Semua Produk",
+  "Produk Herbal",
+  "Makanan Kesehatan & Minuman",
+  "Kosmetik & Perawatan Rumah",
+];
+
+const mapCategoryToId = (category: string): string => {
+  switch (category) {
+    case "Produk Herbal":
+      return "herbal";
+    case "Makanan Kesehatan & Minuman":
+      return "health-food";
+    case "Kosmetik & Perawatan Rumah":
+      return "cosmetics";
+    default:
+      return "all";
+  }
 };
-
-const products: Product[] = Array.from({ length: 10 }, (_, i) => {
-  const currentProduct = productData[i];
-
-  return {
-    id: i + 1,
-    name: currentProduct.name,
-    category: currentProduct.category,
-    price: getProductPrice(currentProduct.name),
-    image: currentProduct.image,
-  };
-});
 ---
 
-<div class="products">
-  {
-    products.map((product) => (
-      <div class="product-card" data-category={product.category}>
-        <img
-          src={product.image}
-          alt={product.name}
-          class="product-image"
-          onerror={`this.src='https://via.placeholder.com/300x300?text=${encodeURIComponent(product.name)}'`}
-        />
-        <div class="product-details">
-          <h3>{product.name}</h3>
-          <div class="product-footer">
-            <span class="price">Rp{product.price.toLocaleString()}</span>
-            <button class="btn" data-product={JSON.stringify(product)}>
-              BELI
-            </button>
+<div class="product-grid-container">
+  <div class="category-filter">
+    {
+      categories.map((category, index) => (
+        <button
+          class={`category-btn ${index === 0 ? "active" : ""}`}
+          data-category={mapCategoryToId(category)}
+        >
+          {category}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="product-grid">
+    {
+      products.map((product) => (
+        <div class="product-card" data-category={product.category}>
+          <div class="product-image-container">
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              class="product-image"
+            />
+            <div class="product-rating">
+              <span class="rating-star">★</span>
+              <span class="rating-value">{product.rating}</span>
+            </div>
+          </div>
+
+          <div class="product-details">
+            <h3 class="product-name">{product.name}</h3>
+            <p class="product-description">{product.description}</p>
+
+            <div class="product-footer">
+              <span class="product-price">
+                Rp {product.price.toLocaleString()}
+              </span>
+              <button class="add-to-cart-btn">Beli</button>
+            </div>
           </div>
         </div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>
 
 <script>
-  // Define Product type for client-side code
-  type Product = {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    image: string;
-  };
+  document.addEventListener("DOMContentLoaded", () => {
+    const categoryButtons = document.querySelector(".category-filter");
+    const productCards = document.querySelectorAll(".product-card");
 
-  // Handle add to cart
-  function addToCart(product: Product) {
-    const event = new CustomEvent("addToCart", { detail: product });
-    document.dispatchEvent(event);
-  }
+    categoryButtons?.addEventListener("click", (event) => {
+      const target = event.target as HTMLButtonElement;
 
-  // Add click handlers to all buttons
-  document.querySelectorAll(".btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      try {
-        const productString = button.getAttribute("data-product");
-        if (productString) {
-          const product = JSON.parse(productString) as Product;
-          addToCart(product);
-        }
-      } catch (error) {
-        console.error("Error parsing product data:", error);
+      if (target.classList.contains("category-btn")) {
+        // Remove active class from all buttons
+        categoryButtons
+          .querySelectorAll(".category-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+
+        // Add active class to clicked button
+        target.classList.add("active");
+
+        const selectedCategory = target.dataset.category;
+
+        productCards.forEach((card) => {
+          const productCategory = card.getAttribute("data-category");
+
+          if (
+            selectedCategory === "all" ||
+            productCategory === selectedCategory
+          ) {
+            (card as HTMLDivElement).style.display = "block";
+          } else {
+            (card as HTMLDivElement).style.display = "none";
+          }
+        });
       }
     });
   });
 </script>
 
 <style>
-  .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+  /* Reset dan base styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
+  /* Container utama */
+  .product-grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: "Arial", sans-serif;
+  }
+
+  /* Filter kategori */
+  .category-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .category-btn {
+    padding: 0.625rem 1.25rem;
+    border: 2px solid #14b8a6;
+    background-color: transparent;
+    color: #14b8a6;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .category-btn.active {
+    background-color: #14b8a6;
+    color: white;
+  }
+
+  .category-btn:hover {
+    background-color: rgba(20, 184, 166, 0.1);
+  }
+
+  /* Grid produk */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Kartu produk */
   .product-card {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+  }
+
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Kontainer gambar produk */
+  .product-image-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
   }
 
   .product-image {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
   }
 
+  .product-card:hover .product-image {
+    transform: scale(1.1);
+  }
+
+  /* Rating */
+  .product-rating {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .rating-star {
+    color: #fbbf24;
+    margin-right: 0.5rem;
+  }
+
+  .rating-value {
+    font-weight: bold;
+    color: #374151;
+  }
+
+  /* Detail produk */
   .product-details {
-    padding: 10px;
-    height: 100%;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: calc(100% - 250px);
   }
 
-  .product-details h3 {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    padding-inline: 6px;
+  .product-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-description {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .product-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    margin-top: auto;
   }
 
-  button {
-    padding: 8px 16px;
-    background-color: #14c023;
+  .product-price {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #14b8a6;
+  }
+
+  .add-to-cart-btn {
+    background-color: #14b8a6;
     color: white;
     border: none;
-    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
   }
 
-  button:hover {
-    background-color: #14c023;
+  .add-to-cart-btn:hover {
+    background-color: #0f766e;
   }
 
-  .price {
-    font-weight: bold;
-    color: #333;
+  /* Responsif */
+  @media (max-width: 768px) {
+    .category-filter {
+      gap: 0.5rem;
+    }
+
+    .category-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .product-image-container {
+      height: 200px;
+    }
   }
 </style>

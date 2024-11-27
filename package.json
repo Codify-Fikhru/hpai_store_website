@@ -11,7 +11,14 @@
   },
   "dependencies": {
     "astro": "^4.16.13",
+    "autoprefixer": "^10.4.20",
     "express": "^4.21.1",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15"
+  },
+  "devDependencies": {
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1"
   }
 }
