@@ -1,102 +1,97 @@
 ---
 interface Category {
-  name: string;
-  id: string;
+	name: string
+	id: string
 }
 
 const categories: Category[] = [
-  { name: "Semua Produk", id: "all" },
-  { name: "Produk Herbal", id: "herbal" },
-  { name: "Makanan Kesehatan & Minuman", id: "health-food" },
-  { name: "Kosmetik & Perawatan Rumah", id: "cosmetics" },
-];
+	{ name: "Semua Produk", id: "all" },
+	{ name: "Produk Herbal", id: "herbal" },
+	{ name: "Makanan Kesehatan & Minuman", id: "health-food" },
+	{ name: "Kosmetik & Perawatan Rumah", id: "cosmetics" },
+]
 ---
 
 <div class="product-grid-container">
-  <div class="category-filter">
-    {
-      categories.map((category, index) => (
-        <button
-          class={`category-btn ${index === 0 ? "active" : ""}`}
-          data-category={category.id}
-        >
-          {category.name}
-        </button>
-      ))
-    }
-  </div>
+	<div class="category-filter" id="category-filter">
+		{
+			categories.map((category, index) => (
+				<button class={`category-btn ${index === 0 ? "active" : ""}`} data-category={category.id}>
+					{category.name}
+				</button>
+			))
+		}
+	</div>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const categoryButtons = document.querySelector(".category-filter");
+	document.addEventListener("DOMContentLoaded", () => {
+		const categoryFilter = document.getElementById("category-filter")
 
-    categoryButtons?.addEventListener("click", (event) => {
-      const target = event.target as HTMLButtonElement;
+		categoryFilter?.addEventListener("click", (event) => {
+			const target = event.target as HTMLButtonElement
 
-      if (target.classList.contains("category-btn")) {
-        // Remove active class from all buttons
-        categoryButtons
-          .querySelectorAll(".category-btn")
-          .forEach((btn) => btn.classList.remove("active"));
+			if (target.classList.contains("category-btn")) {
+				// Remove active class from all buttons
+				categoryFilter.querySelectorAll(".category-btn").forEach((btn) => btn.classList.remove("active"))
 
-        // Add active class to clicked button
-        target.classList.add("active");
-      }
-    });
-  });
+				// Add active class to clicked button
+				target.classList.add("active")
+			}
+		})
+	})
 </script>
 
 <style>
-  .product-grid-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+	.product-grid-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 20px;
+	}
 
-  .category-filter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-  }
+	.category-filter {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 30px;
+		flex-wrap: wrap;
+	}
 
-  .category-btn {
-    background-color: #f0f4f8;
-    border: 1.5px solid #e2e8f0;
-    padding: 10px 18px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 500;
-    color: #4a5568;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    white-space: nowrap;
-  }
+	.category-btn {
+		background-color: #f0f4f8;
+		border: 1.5px solid #e2e8f0;
+		padding: 10px 18px;
+		border-radius: 25px;
+		cursor: pointer;
+		font-weight: 500;
+		color: #4a5568;
+		transition: all 0.3s ease-in-out;
+		outline: none;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+		white-space: nowrap;
+	}
 
-  .category-btn:hover {
-    background-color: #e2e8f0;
-    transform: translateY(-2px);
-  }
+	.category-btn:hover {
+		background-color: #e2e8f0;
+		transform: translateY(-2px);
+	}
 
-  .category-btn.active {
-    background-color: #10b981;
-    border-color: #10b981;
-    color: white;
-    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
-  }
+	.category-btn.active {
+		background-color: #10b981;
+		border-color: #10b981;
+		color: white;
+		box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+	}
 
-  @media (max-width: 768px) {
-    .category-filter {
-      gap: 8px;
-    }
+	@media (max-width: 768px) {
+		.category-filter {
+			gap: 8px;
+		}
 
-    .category-btn {
-      padding: 8px 14px;
-      font-size: 0.9rem;
-    }
-  }
+		.category-btn {
+			padding: 8px 14px;
+			font-size: 0.9rem;
+		}
+	}
 </style>

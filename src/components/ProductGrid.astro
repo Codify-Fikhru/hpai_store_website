@@ -18,7 +18,7 @@ function generateWhatsappLink(product_name: string) {
 	return `https://wa.me/${nomor_wa}?text=${pesan}`
 }
 
-// TODO: Kalo bisa, datanya diambil dari API/Backend
+
 const products: Product[] = [
 	{
 		id: "herbal-1",
@@ -372,25 +372,113 @@ const products: Product[] = [
 		imageUrl: "/image/SusuKambing.png",
 		rating: 4.8,
 	},
-	// Semua Placeholder sudah kuhapus. - Nwekoder
+	{
+		id: "cosmetic-14",
+		name: "Beauty Day Cream",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 75000,
+		imageUrl: "/image/Day Cream.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "Beauty Night Cream",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 85000,
+		imageUrl: "/image/Night Cream.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "Facial wash",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 30000,
+		imageUrl: "/image/Facial Wash.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "Green Wash Detergent Concentrate",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 80000,
+		imageUrl: "/image/Green Wash.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "Hibis",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 235000,
+		imageUrl: "/image/Hibis.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "HNI Body Wash",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 45000,
+		imageUrl: "/image/BodyWash.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "HNI Shampoo",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 35000,
+		imageUrl: "/image/Shampo.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "Pasta Gigi Herbal Anak Rasa Anggur",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 13000,
+		imageUrl: "/image/PastaGigiAnggur.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "Pasta Gigi Herbal Anak Rasa Stroberi",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 13000,
+		imageUrl: "/image/PastaGigiStroberi.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "Pasta Gigi Herbal Anak Rasa Tutti Fruity",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 13000,
+		imageUrl: "/image/PastaGigiJeruk.png",
+		rating: 4.8,
+	},
+	{
+		id: "cosmetic-14",
+		name: "Pasta Gigi Herbal HPAI",
+		description: "Superfood untuk energi dan kesehatan kulit",
+		category: "cosmetics",
+		price: 20000,
+		imageUrl: "/image/PastaGigiHerbal.png",
+		rating: 4.5,
+	},
 ]
 
-// TODO: Hapus saja kalau ndak dipake
-const categories = ["Semua Produk", "Produk Herbal", "Makanan Kesehatan & Minuman", "Kosmetik & Perawatan Rumah"]
-
-// TODO: Hapus saja kalau ndak dipake
-const mapCategoryToId = (category: string): string => {
-	switch (category) {
-		case "Produk Herbal":
-			return "herbal"
-		case "Makanan Kesehatan & Minuman":
-			return "health-food"
-		case "Kosmetik & Perawatan Rumah":
-			return "cosmetics"
-		default:
-			return "all"
-	}
-}
+const categories = [
+	{ name: "Semua Produk", id: "all" },
+	{ name: "Produk Herbal", id: "herbal" },
+	{ name: "Makanan Kesehatan & Minuman", id: "health-food" },
+	{ name: "Kosmetik & Perawatan Rumah", id: "cosmetics" },
+]
 ---
 
 <div class="product-grid">
@@ -412,7 +500,9 @@ const mapCategoryToId = (category: string): string => {
 					<div class="product-footer">
 						<span class="product-price">Rp {product.price.toLocaleString()}</span>
 						{/* Langsung diarahkan ke Whatsapp toko */}
-						<a target="_blank" href={generateWhatsappLink(product.name)} class="add-to-cart-btn">Beli</a>
+						<a target="_blank" href={generateWhatsappLink(product.name)} class="add-to-cart-btn">
+							Beli
+						</a>
 					</div>
 				</div>
 			</div>
@@ -421,70 +511,58 @@ const mapCategoryToId = (category: string): string => {
 </div>
 
 <script>
-	// Tidak perlu dipakai lagi
-	// document.addEventListener("DOMContentLoaded", () => {
-	// 	const buttons = document.querySelectorAll(".add-to-cart-btn")
-	// 	buttons.forEach((button) => {
-	// 		button.addEventListener("click", (event) => {
-	// 			const productCard = (event.target as HTMLElement).closest(".product-card")
-	// 			if (productCard) {
-	// 				const productName = productCard.querySelector(".product-name")?.textContent || "Produk"
-	// 				const productPrice = productCard.querySelector(".product-price")?.textContent || "Harga tidak tersedia"
-
-	// 				// Misalnya, buka halaman baru atau modal
-	// 				alert(`Anda akan membeli ${productName} seharga ${productPrice}`)
-	// 			}
-	// 		})
-	// 	})
-	// })
-
 	document.addEventListener("DOMContentLoaded", () => {
-		const categoryButtons = document.querySelector(".category-filter")
-		const productCards = document.querySelectorAll(".product-card")
-		const searchInput = document.getElementById("product-search") as HTMLInputElement
-		const priceRangeInput = document.getElementById("price-range") as HTMLInputElement
-		const priceValueDisplay = document.getElementById("price-value") as HTMLSpanElement
+    const categoryButtons = document.querySelector(".category-filter")
+    const productCards = document.querySelectorAll(".product-card")
+    const searchInput = document.getElementById("product-search") as HTMLInputElement
+    const priceRangeInput = document.getElementById("price-range") as HTMLInputElement
+    const priceValueDisplay = document.getElementById("price-value") as HTMLSpanElement
 
-		// Fungsi filter produk
-		const filterProducts = () => {
-			const searchTerm = searchInput.value.toLowerCase()
-			const maxPrice = parseInt(priceRangeInput.value)
-			priceValueDisplay.textContent = `Rp ${maxPrice.toLocaleString()}`
+    // Fungsi filter produk
+    const filterProducts = () => {
+        const searchTerm = searchInput.value.toLowerCase()
+        const maxPrice = parseInt(priceRangeInput.value)
+        priceValueDisplay.textContent = `Rp ${maxPrice.toLocaleString()}`
 
-			productCards.forEach((card) => {
-				const productName = card.querySelector(".product-name")?.textContent?.toLowerCase() || ""
-				const productPrice = parseInt(card.querySelector(".product-price")?.textContent?.replace("Rp ", "").replace(".", "") || "0")
-				const productCategory = card.getAttribute("data-category")
-				const selectedCategory = document.querySelector(".category-btn.active")?.getAttribute("data-category")
+        productCards.forEach((card) => {
+            const productName = card.querySelector(".product-name")?.textContent?.toLowerCase() || ""
+            const productPrice = parseInt(
+                card.querySelector(".product-price")?.textContent?.replace("Rp ", "").replace(".", "") || "0"
+            )
+            const productCategory = card.getAttribute("data-category")
+            const selectedCategory = document.querySelector(".category-btn.active")?.getAttribute("data-category")
 
-				const matchesSearch = productName.includes(searchTerm)
-				const matchesPrice = productPrice <= maxPrice
-				const matchesCategory = selectedCategory === "all" || productCategory === selectedCategory
+            const matchesSearch = productName.includes(searchTerm)
+            const matchesPrice = productPrice <= maxPrice
+            const matchesCategory = selectedCategory === "all" || productCategory === selectedCategory
 
-				if (matchesSearch && matchesPrice && matchesCategory) {
-					;(card as HTMLDivElement).style.display = "block"
-				} else {
-					;(card as HTMLDivElement).style.display = "none"
-				}
-			})
-		}
+            if (matchesSearch && matchesPrice && matchesCategory) {
+                (card as HTMLDivElement).style.display = "block"
+            } else {
+                (card as HTMLDivElement).style.display = "none"
+            }
+        })
+    }
 
-		// Event listener untuk kategori
-		categoryButtons?.addEventListener("click", (event) => {
-			const target = event.target as HTMLButtonElement
-			if (target.classList.contains("category-btn")) {
-				categoryButtons.querySelectorAll(".category-btn").forEach((btn) => btn.classList.remove("active"))
-				target.classList.add("active")
-				filterProducts()
-			}
-		})
+    // Event listener untuk kategori
+    categoryButtons?.addEventListener("click", (event) => {
+        const target = event.target as HTMLButtonElement
+        if (target.classList.contains("category-btn")) {
+            categoryButtons.querySelectorAll(".category-btn").forEach((btn) => btn.classList.remove("active"))
+            target.classList.add("active")
+            filterProducts()
+        }
+    })
 
-		// Event listener untuk pencarian
-		searchInput?.addEventListener("input", filterProducts)
+    // Event listener untuk pencarian
+    searchInput?.addEventListener("input", filterProducts)
 
-		// Event listener untuk rentang harga
-		priceRangeInput?.addEventListener("input", filterProducts)
-	})
+    // Event listener untuk rentang harga
+    priceRangeInput?.addEventListener("input", filterProducts)
+
+    // Debug logs (bisa dihapus di produksi)
+    console.log("Product Grid Loaded")
+})
 </script>
 
 <style>

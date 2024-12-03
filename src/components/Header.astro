@@ -2,7 +2,6 @@
 import SearchBar from "./SearchBar.astro"
 ---
 
-<!-- TODO: Styling ndak jalan -->
 <header class="professional-header">
 	<nav class="container header-content">
 		<div class="mobile-top">
@@ -31,13 +30,10 @@ import SearchBar from "./SearchBar.astro"
 			</div>
 
 			<div class="right-section">
-				<div class="search-container">
-					<SearchBar />
-				</div>
+				<SearchBar />
 			</div>
 
 			<div class="actions-container">
-				<!-- Disini ndak pake /login.astro -->
 				<a href="/login" class="login-button">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -324,7 +320,7 @@ import SearchBar from "./SearchBar.astro"
 		let lastScroll = 0
 
 		// Supaya pas refresh halaman tapi posisi scroll diatas 50, styling-nya langsung jalan
-		window.addEventListener('DOMContentLoaded', () => {
+		window.addEventListener("DOMContentLoaded", () => {
 			const currentScroll = scrollY
 
 			if (currentScroll > 50) {
