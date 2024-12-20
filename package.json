@@ -20,5 +20,10 @@
   "devDependencies": {
     "stylelint": "^16.10.0",
     "stylelint-config-standard": "^36.0.1"
-  }
+  },
+  "description": "```sh\r npm create astro@latest -- --template basics\r ```",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
